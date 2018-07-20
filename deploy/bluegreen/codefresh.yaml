@@ -1,17 +1,17 @@
 version: '1.0'
 steps:
-#  BuildingDockerImage:
-#    title: Building Docker Image
-#    type: build
-#    image_name: containers101/demochat
-#    working_directory: ./
-#    dockerfile: Dockerfile
-#    tag: '${{CF_SHORT_REVISION}}'
+   BuildingDockerImage:
+     title: Building Docker Image
+     type: build
+     image_name: vynu/demochat
+     working_directory: ./
+     dockerfile: Dockerfile
+     tag: '${{CF_SHORT_REVISION}}'
   BlueGreenDeploy:
     title: Perform a Blue Green Deployment
     image: codefresh/kube-helm:master
     environment:
-      - KUBE_CONTEXT=helmdemo@jFrog-Helm
+      - KUBE_CONTEXT=codefresh@CI-CD
       - NAMESPACE=bluegreen
     commands:
       - echo "Starting commands"
